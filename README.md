@@ -4,7 +4,7 @@ Problem statements can be found at train.usaco.org (registration required).
 
 These solutions are written in python 3 (now supported by the training grader).
 
-As I worked through the problems, I've written comments at places where I was tripped up. Variables are meaningfully named as much as possible. In my opinion, these solutions are a lot more readable than the ones presented in the post-solve analyses (even when the algorithm is the same).
+As I worked through the problems, I've written comments at places where I was tripped up. Variables are meaningfully named as much as possible. In my opinion, these python solutions are a lot more readable than the ones presented in the post-solve analyses (even when the algorithm is the same).
 
 Some of the file I/O code, especially in the earlier sections, aren't as clean as they can be. As I progress through the problems, I'm also picking up on new python idioms. I won't be cleaning up earlier solutions.
 
