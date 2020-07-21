@@ -16,15 +16,12 @@ for i in range(num_lines):
   graph[a][b] = p
   num_companies = max(a, b, num_companies)
 
-yes_control = set()  # each element (a, b) indicates a control b
-no_control = set()  # each element (a, b) indicates a does not control b
+all_control_pairs = set()  # each element (a, b) indicates a controls b
 
 def controls(a, b):
   # we'll discover controls as we travel through the graph. don't do repeated work.
-  if (a, b) in yes_control:
+  if (a, b) in all_control_pairs:
     return True
-  if (a, b) in no_control:
-    return False
 
   controlled = set()  # set of companies that a controls
   shares = [0] * (num_companies + 1)  # shares[c] = p if a owns p% of c, transitiviely (as we discover them)
@@ -40,7 +37,7 @@ def controls(a, b):
         if shares[c] > 50 and c not in controlled:
           controlled.add(c)
           new_middlemen.add(c)
-          yes_control.add((a, c))
+          all_control_pairs.add((a, c))
     middlemen = new_middlemen
 
   return (b in controlled)
@@ -48,9 +45,9 @@ def controls(a, b):
 for a in range(1, num_companies + 1):
   for b in range(1, num_companies + 1):
     if controls(a, b):
-      yes_control.add((a, b))
+      all_control_pairs.add((a, b))  # probably unnecessaly since controls() already added all the discovered pairs.
 
-answer = list(yes_control)
+answer = list(all_control_pairs)
 answer.sort()
 for (a, b) in answer:
   if a != b:
