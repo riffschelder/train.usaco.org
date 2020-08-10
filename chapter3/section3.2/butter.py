@@ -15,8 +15,8 @@ def main():
     for _ in range(num_cows):
       cow_positions.append(int(fin.readline()) - 1)
 
-    # Floyd-Warshall takes too long to run. Since the graph has limited number
-    # edges, Dijkstra's is better, so we save an adjancency list.
+    # Floyd-Warshall takes too long to run. Since the graph has a limited number
+    # of edges, it's better to use Dijkstra's with an adjacency list.
     paths_from = [[] for _ in range(num_pastures)]
     for _ in range(num_paths):
       (a, b, length) = [int(x) for x in fin.readline().split()]
@@ -50,6 +50,7 @@ def get_min_distance_from(source, paths_from, num_pastures):
       while min_distance_found_for[pasture]:
         (distance, pasture) = heappop(frontier)
     except IndexError:
+      # `frontier' is empty because the graph has been fully traversed.
       break
 
     min_distance_from_source_to[pasture] = distance
