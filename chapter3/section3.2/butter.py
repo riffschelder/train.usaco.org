@@ -50,7 +50,7 @@ def get_min_distance_from(source, paths_from, num_pastures):
       while min_distance_found_for[pasture]:
         (distance, pasture) = heappop(frontier)
     except IndexError:
-      # `frontier' is empty because the graph has been fully traversed.
+      # `frontier` is empty because the graph has been fully traversed.
       break
 
     min_distance_from_source_to[pasture] = distance
